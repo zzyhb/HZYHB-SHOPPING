@@ -70,7 +70,7 @@ public class AuthTokenController {
         BaseResult baseResult = new BaseResult();
         if (redisService == null) {
             baseResult.setSuccess(false);
-            baseResult.setMessage("redis服务异常,请联系管理员检查");
+            baseResult.setMessage("redis服务异常,请联系管理员检查 ");
         }
         if (CookieUtil.getUid(request, cookieName) == null || redisService.getRedisValue(CookieUtil.getUid(request, cookieName)) == null) {
             baseResult.setSuccess(false);
