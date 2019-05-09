@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * @Date: 2019/4/3 15:23
  * @Description:
  */
-@Configuration
+//@Configuration
 public class InterceptorConfig extends WebMvcConfigurationSupport{
     @Autowired
     private AuthenticationInterceptor authenticationInterceptor;

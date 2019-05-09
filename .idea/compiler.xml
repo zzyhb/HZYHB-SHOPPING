@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="shopping-CMS" />
         <module name="shopping-common" />
+        <module name="shopping-elasticsearch-api" />
         <module name="shopping-member-api" />
         <module name="shopping-product-api" />
         <module name="shopping-redis-api" />
@@ -15,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="elasticsearch" target="1.8" />
       <module name="shopping-api" target="1.8" />
       <module name="shopping-member" target="1.8" />
     </bytecodeTargetLevel>
@@ -22,10 +24,12 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="HZYHB-SHOPPING" options="-parameters" />
+      <module name="elasticsearch" options="-parameters" />
       <module name="shopping-CMS" options="-parameters" />
       <module name="shopping-SSO" options="-parameters" />
       <module name="shopping-api" options="-parameters" />
       <module name="shopping-common" options="-parameters" />
+      <module name="shopping-elasticsearch-api" options="-parameters" />
       <module name="shopping-member" options="-parameters" />
       <module name="shopping-member-api" options="-parameters" />
       <module name="shopping-product-api" options="-parameters" />

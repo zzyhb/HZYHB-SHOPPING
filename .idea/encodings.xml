@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/shopping-CMS" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping-SSO" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping-elasticsearch-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping-member-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping-product-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping-redis-api" charset="UTF-8" />

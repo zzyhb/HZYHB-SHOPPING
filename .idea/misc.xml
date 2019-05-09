@@ -22,6 +22,7 @@
         <option value="$PROJECT_DIR$/shopping-CMS/pom.xml" />
         <option value="$PROJECT_DIR$/shopping-redis-api/pom.xml" />
         <option value="$PROJECT_DIR$/shopping-SSO/pom.xml" />
+        <option value="$PROJECT_DIR$/shopping-elasticsearch-api/pom.xml" />
       </list>
     </option>
   </component>

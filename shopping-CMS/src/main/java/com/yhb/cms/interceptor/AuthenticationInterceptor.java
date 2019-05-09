@@ -6,8 +6,11 @@ import com.yhb.cms.exception.BizExceptionEnum;
 import com.yhb.common.constant.Constant;
 import com.yhb.common.result.BaseResult;
 import com.yhb.common.util.CookieUtil;
+import com.yhb.common.util.JSONUtil;
+import com.yhb.member.service.MemberInfoService;
 import com.yhb.redis.service.RedisService;
 import com.yhb.sso.service.AuthTokenService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -23,10 +26,17 @@ import static com.yhb.common.constant.Constant.cookieName;
  * @Date: 2019/4/3 15:21
  * @Description: 请求拦截器
  */
-@Component
+//@Component
+@Slf4j
 public class AuthenticationInterceptor implements HandlerInterceptor {
+    private static final ThreadLocal<Long> TIME_THREADLOCAL = new ThreadLocal<Long>() {};
+
     @Reference(version = "1.0.0")
     private AuthTokenService authTokenService;
+    @Reference(version = "1.0.0")
+    private RedisService redisService;
+    @Reference(version = "1.0.0")
+    private MemberInfoService memberInfoService;
     /**
      *  在业务处理器处理请求之前被调用
      * @param request
@@ -37,17 +47,15 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("AuthenticationInterceptor-----------------preHandle---------------");
+        TIME_THREADLOCAL.set(System.currentTimeMillis());
+        if (authTokenService == null || redisService == null || memberInfoService == null){
+            throw new BizException(BizExceptionEnum.DUBBORPCERROR);
+        }
         if (null == CookieUtil.getUid(request, cookieName)){
-            response.sendRedirect("https://www.baidu.com/");
             return false;
         }else {
-            if (authTokenService == null){
-                throw new BizException(BizExceptionEnum.DUBBORPCERROR);
-            }
             BaseResult login = authTokenService.isLogin(CookieUtil.getUid(request, cookieName));
             if(!login.getSuccess()){
-                response.sendRedirect("https://www.baidu.com/");
                 return false;
             }else {
                 return true;
@@ -65,7 +73,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
      */
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        System.out.println("AuthenticationInterceptor-----------------postHandle---------------");
     }
 
     /**
@@ -77,7 +84,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
      * @throws Exception
      */
     @Override
-    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        System.out.println("AuthenticationInterceptor-----------------afterCompletion---------------");
+    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+        log.info("请求方式:{},url:{},耗时:{}ms",httpServletRequest.getMethod(),httpServletRequest.getRequestURI(),(System.currentTimeMillis()-TIME_THREADLOCAL.get()));
     }
 }

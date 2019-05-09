@@ -1,4 +1,4 @@
-package com.yhb.cms.controller;
+package com.yhb.cms.exception;
 
 import com.yhb.cms.exception.BizException;
 import com.yhb.cms.exception.BizExceptionEnum;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice
 @RestController
 @Slf4j
-public class BaseController {
+public class GlobalExceptionHandleController {
     @ExceptionHandler(value = Exception.class)
     public BaseResult globalExceptionHandle(Exception exception) {
         log.error("发生异常:", exception);

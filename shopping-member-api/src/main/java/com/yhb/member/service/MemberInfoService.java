@@ -1,5 +1,6 @@
 package com.yhb.member.service;
 
+import com.yhb.member.entity.MemberInfo;
 import com.yhb.member.vo.SimpleMemberInfo;
 
 import java.util.List;
@@ -11,4 +12,14 @@ import java.util.List;
  */
 public interface MemberInfoService {
     List<SimpleMemberInfo> getAllMemberSimpleInfos();
+
+    List<MemberInfo> getAllMemberInfos();
+
+    SimpleMemberInfo getMemberInfoById(Long id);
+
+    Integer insertMember(MemberInfo memberInfo);
+
+    Integer updateMemberInfoById(MemberInfo memberInfo);
+
+    Integer deleteMemberInfoById(Long id);
 }

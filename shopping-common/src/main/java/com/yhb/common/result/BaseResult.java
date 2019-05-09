@@ -19,6 +19,7 @@ public class BaseResult implements Serializable {
     private Integer code;
     private Boolean success;
     private String message;
+    private Integer size;
     private Object data;
 
     public BaseResult() {
@@ -52,8 +53,26 @@ public class BaseResult implements Serializable {
 
     public static BaseResult setSuccessResult(Object data) {
         BaseResult baseResult = new BaseResult();
+        baseResult.setCode(200);
         baseResult.setSuccess(true);
         baseResult.setData(data);
+        return baseResult;
+    }
+
+    public static BaseResult setSuccessResultSize(Object data,Integer size) {
+        BaseResult baseResult = new BaseResult();
+        baseResult.setCode(200);
+        baseResult.setSuccess(true);
+        baseResult.setData(data);
+        baseResult.setSize(size);
+        return baseResult;
+    }
+
+    public static BaseResult setSuccessMessage(String message) {
+        BaseResult baseResult = new BaseResult();
+        baseResult.setCode(200);
+        baseResult.setSuccess(true);
+        baseResult.setMessage(message);
         return baseResult;
     }
 }

@@ -1,102 +1,103 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yhb.member.dao.MemberInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.yhb.member.entity.MemberInfo" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
-    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
-    <result column="is_deleted" property="isDeleted" jdbcType="VARCHAR" />
-    <result column="code" property="code" jdbcType="VARCHAR" />
-    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
-    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="img_path" property="imgPath" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="INTEGER" />
-    <result column="balance" property="balance" jdbcType="DOUBLE" />
-    <result column="Frozenbalance" property="frozenbalance" jdbcType="DOUBLE" />
-    <result column="jfvalue" property="jfvalue" jdbcType="DOUBLE" />
-    <result column="Frozenjfvalue" property="frozenjfvalue" jdbcType="DOUBLE" />
-    <result column="province" property="province" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="area" property="area" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="paypassword" property="paypassword" jdbcType="VARCHAR" />
-    <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="level" property="level" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="recommend_mobile" property="recommendMobile" jdbcType="VARCHAR" />
-    <result column="card_number" property="cardNumber" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="SimpleResultMap" type="com.yhb.member.vo.SimpleMemberInfo" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
-    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
-    <result column="code" property="membercode" jdbcType="VARCHAR" />
-    <result column="nick_name" property="membername" jdbcType="VARCHAR" />
-    <result column="mobile" property="memberphone" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+<mapper namespace="com.yhb.member.dao.MemberInfoMapper">
+    <resultMap id="BaseResultMap" type="com.yhb.member.entity.MemberInfo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="img_path" property="imgPath" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="balance" property="balance" jdbcType="DOUBLE"/>
+        <result column="Frozenbalance" property="frozenbalance" jdbcType="DOUBLE"/>
+        <result column="jfvalue" property="jfvalue" jdbcType="DOUBLE"/>
+        <result column="Frozenjfvalue" property="frozenjfvalue" jdbcType="DOUBLE"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="paypassword" property="paypassword" jdbcType="VARCHAR"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="level" property="level" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="recommend_mobile" property="recommendMobile" jdbcType="VARCHAR"/>
+        <result column="card_number" property="cardNumber" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="SimpleResultMap" type="com.yhb.member.vo.SimpleMemberInfo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="nick_name" property="name" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     id, gmt_create, gmt_modify, is_deleted, code, nick_name, mobile, email, img_path, 
     password, sex, balance, Frozenbalance, jfvalue, Frozenjfvalue, province, city, area, 
     address, paypassword, real_name, remark, level, type, recommend_mobile, card_number
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yhb.member.entity.MemberInfoExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    'false' as QUERYID,
-    <include refid="Base_Column_List" />
-    from member_baseinfo
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from member_baseinfo
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yhb.member.entity.MemberInfoExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from member_baseinfo
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from member_baseinfo
+        where id = #{id,jdbcType=BIGINT} and is_deleted = 0
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from member_baseinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yhb.member.entity.MemberInfo" >
+    <insert id="insert" parameterType="com.yhb.member.entity.MemberInfo">
     insert into member_baseinfo (id, gmt_create, gmt_modify, 
       is_deleted, code, nick_name, 
       mobile, email, img_path, 
@@ -106,8 +107,8 @@
       address, paypassword, real_name, 
       remark, level, type, 
       recommend_mobile, card_number)
-    values (#{id,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
-      #{isDeleted,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, now(), now(),
+      '0', #{code,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
       #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{imgPath,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{balance,jdbcType=DOUBLE}, 
       #{frozenbalance,jdbcType=DOUBLE}, #{jfvalue,jdbcType=DOUBLE}, #{frozenjfvalue,jdbcType=DOUBLE}, 
@@ -116,254 +117,236 @@
       #{remark,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
       #{recommendMobile,jdbcType=VARCHAR}, #{cardNumber,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yhb.member.entity.MemberInfo" >
-    insert into member_baseinfo
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="gmtCreate != null" >
-        gmt_create,
-      </if>
-      <if test="gmtModify != null" >
-        gmt_modify,
-      </if>
-      <if test="isDeleted != null" >
-        is_deleted,
-      </if>
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="nickName != null" >
-        nick_name,
-      </if>
-      <if test="mobile != null" >
-        mobile,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="imgPath != null" >
-        img_path,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="balance != null" >
-        balance,
-      </if>
-      <if test="frozenbalance != null" >
-        Frozenbalance,
-      </if>
-      <if test="jfvalue != null" >
-        jfvalue,
-      </if>
-      <if test="frozenjfvalue != null" >
-        Frozenjfvalue,
-      </if>
-      <if test="province != null" >
-        province,
-      </if>
-      <if test="city != null" >
-        city,
-      </if>
-      <if test="area != null" >
-        area,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="paypassword != null" >
-        paypassword,
-      </if>
-      <if test="realName != null" >
-        real_name,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-      <if test="level != null" >
-        level,
-      </if>
-      <if test="type != null" >
-        type,
-      </if>
-      <if test="recommendMobile != null" >
-        recommend_mobile,
-      </if>
-      <if test="cardNumber != null" >
-        card_number,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModify != null" >
-        #{gmtModify,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDeleted != null" >
-        #{isDeleted,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="nickName != null" >
-        #{nickName,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null" >
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="imgPath != null" >
-        #{imgPath,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=INTEGER},
-      </if>
-      <if test="balance != null" >
-        #{balance,jdbcType=DOUBLE},
-      </if>
-      <if test="frozenbalance != null" >
-        #{frozenbalance,jdbcType=DOUBLE},
-      </if>
-      <if test="jfvalue != null" >
-        #{jfvalue,jdbcType=DOUBLE},
-      </if>
-      <if test="frozenjfvalue != null" >
-        #{frozenjfvalue,jdbcType=DOUBLE},
-      </if>
-      <if test="province != null" >
-        #{province,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null" >
-        #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="paypassword != null" >
-        #{paypassword,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null" >
-        #{realName,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        #{level,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null" >
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="recommendMobile != null" >
-        #{recommendMobile,jdbcType=VARCHAR},
-      </if>
-      <if test="cardNumber != null" >
-        #{cardNumber,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yhb.member.entity.MemberInfo" >
+    <insert id="insertSelective" parameterType="com.yhb.member.entity.MemberInfo">
+        insert into member_baseinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            gmt_create,
+            gmt_modify,
+            is_deleted,
+            <if test="code != null">
+                code,
+            </if>
+            <if test="nickName != null">
+                nick_name,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="imgPath != null">
+                img_path,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="balance != null">
+                balance,
+            </if>
+            <if test="frozenbalance != null">
+                Frozenbalance,
+            </if>
+            <if test="jfvalue != null">
+                jfvalue,
+            </if>
+            <if test="frozenjfvalue != null">
+                Frozenjfvalue,
+            </if>
+            <if test="province != null">
+                province,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="area != null">
+                area,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="paypassword != null">
+                paypassword,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="recommendMobile != null">
+                recommend_mobile,
+            </if>
+            <if test="cardNumber != null">
+                card_number,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            now(),
+            now(),
+            '0',
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null">
+                #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="imgPath != null">
+                #{imgPath,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="balance != null">
+                #{balance,jdbcType=DOUBLE},
+            </if>
+            <if test="frozenbalance != null">
+                #{frozenbalance,jdbcType=DOUBLE},
+            </if>
+            <if test="jfvalue != null">
+                #{jfvalue,jdbcType=DOUBLE},
+            </if>
+            <if test="frozenjfvalue != null">
+                #{frozenjfvalue,jdbcType=DOUBLE},
+            </if>
+            <if test="province != null">
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="paypassword != null">
+                #{paypassword,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="recommendMobile != null">
+                #{recommendMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="cardNumber != null">
+                #{cardNumber,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yhb.member.entity.MemberInfo">
+        update member_baseinfo
+        <set>
+            gmt_modify = now(),
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null">
+                nick_name = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="imgPath != null">
+                img_path = #{imgPath,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="balance != null">
+                balance = #{balance,jdbcType=DOUBLE},
+            </if>
+            <if test="frozenbalance != null">
+                Frozenbalance = #{frozenbalance,jdbcType=DOUBLE},
+            </if>
+            <if test="jfvalue != null">
+                jfvalue = #{jfvalue,jdbcType=DOUBLE},
+            </if>
+            <if test="frozenjfvalue != null">
+                Frozenjfvalue = #{frozenjfvalue,jdbcType=DOUBLE},
+            </if>
+            <if test="province != null">
+                province = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                area = #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="paypassword != null">
+                paypassword = #{paypassword,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="recommendMobile != null">
+                recommend_mobile = #{recommendMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="cardNumber != null">
+                card_number = #{cardNumber,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yhb.member.entity.MemberInfo">
     update member_baseinfo
-    <set >
-      <if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModify != null" >
-        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDeleted != null" >
-        is_deleted = #{isDeleted,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null" >
-        code = #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="nickName != null" >
-        nick_name = #{nickName,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null" >
-        mobile = #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="imgPath != null" >
-        img_path = #{imgPath,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=INTEGER},
-      </if>
-      <if test="balance != null" >
-        balance = #{balance,jdbcType=DOUBLE},
-      </if>
-      <if test="frozenbalance != null" >
-        Frozenbalance = #{frozenbalance,jdbcType=DOUBLE},
-      </if>
-      <if test="jfvalue != null" >
-        jfvalue = #{jfvalue,jdbcType=DOUBLE},
-      </if>
-      <if test="frozenjfvalue != null" >
-        Frozenjfvalue = #{frozenjfvalue,jdbcType=DOUBLE},
-      </if>
-      <if test="province != null" >
-        province = #{province,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        city = #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null" >
-        area = #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="paypassword != null" >
-        paypassword = #{paypassword,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null" >
-        real_name = #{realName,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        level = #{level,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="recommendMobile != null" >
-        recommend_mobile = #{recommendMobile,jdbcType=VARCHAR},
-      </if>
-      <if test="cardNumber != null" >
-        card_number = #{cardNumber,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yhb.member.entity.MemberInfo" >
-    update member_baseinfo
-    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+    set gmt_modify = now(),
       is_deleted = #{isDeleted,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
@@ -389,10 +372,11 @@
       card_number = #{cardNumber,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <!--查询人员简单信息-->
-  <select id="selectMemberSimpleInfoByExample" resultMap="SimpleResultMap" parameterType="com.yhb.member.vo.SimpleMemberInfo" >
+    <!--查询人员简单信息-->
+    <select id="selectMemberSimpleInfoByExample" resultMap="SimpleResultMap"
+            parameterType="com.yhb.member.vo.SimpleMemberInfo">
     select
     id,gmt_create,gmt_modify,code,nick_name,mobile
-    from member_baseinfo where 1=1
+    from member_baseinfo where 1=1 and is_deleted = 0
   </select>
 </mapper>
