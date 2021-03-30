@@ -26,8 +26,8 @@ public class TestController {
     // Endpoint以杭州为例，其它Region请按实际情况填写。
     private final String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
     // 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建RAM账号。
-    private final String accessKeyId = "LTAI66VqmDoIZQWx";
-    private final String accessKeySecret = "mOGcJ5lTaxlyufgU3zxJcZi2madlHP";
+    // 为了安全起见  暂时将RAM账号密码删除
+    
     private final String bucketName = "hzyhb";
     private final String key = "mOGcJ5lTaxlyufgU3zxJcZi2madlHP";
 
